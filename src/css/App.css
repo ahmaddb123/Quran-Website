@@ -1,0 +1,428 @@
+:root {
+  --primary-color: #27374d;
+  --secondary-color: #dde6ed;
+  --background-color: #526d82;
+  --color: #00adb5;
+  --text-color: #333333;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+/* Header */
+.header {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  position: relative;
+  z-index: 2000;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header nav ul {
+  display: flex;
+}
+
+.header nav ul .li {
+  margin: 7px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 20px;
+  transition: 0.5s;
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+.header nav ul .li:hover {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  font-weight: bold;
+}
+.logo {
+  width: 100px;
+}
+.icon-toggle {
+  display: none;
+}
+@media (max-width: 768px) {
+  .header nav {
+    position: absolute;
+    width: 100%;
+    top: -250px;
+    right: 0;
+    background-color: var(--primary-color);
+    transition: 0.5s;
+    opacity: 0;
+    z-index: 1000;
+  }
+  .header nav ul {
+    flex-direction: column;
+  }
+  .icon-toggle {
+    display: block;
+    color: var(--background-color);
+    font-size: 30px;
+    border: none;
+    background-color: transparent;
+  }
+  .header nav.responsive_nav {
+    opacity: 1;
+    top: 100px;
+  }
+}
+/* End Header  */
+/* Landing*/
+.landing {
+  width: 100%;
+  height: calc(100vh - 100px);
+  background-image: url("../images/background\ new-1.png");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+.info {
+  background-color: #526d82bd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  color: var(--secondary-color);
+  text-align: center;
+  border-radius: 20px;
+}
+.landing h1 {
+  position: relative;
+  z-index: 3;
+  font-family: "Amiri", serif;
+  font-size: 30px;
+  margin: 10px;
+}
+/* End Landing  */
+/* Quran Cart */
+.card-surah,
+.card-juz,
+.page-card {
+  padding: 80px 0;
+  text-align: center;
+  background-color: var(--primary-color);
+}
+.card-surah .container > h1,
+.page-card .container > h1 {
+  margin: 0 0 70px;
+  font-family: "Amiri", serif;
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+.card-surah .allCard,
+.card-juz .allCard,
+.page-card .allCard {
+  border: 1px solid var(--secondary-color);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/backgound-quran-1.jpg");
+  background-size: contain;
+  position: relative;
+  z-index: 1;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.card-surah .allCard::before,
+.card-juz .allCard::before,
+.page-card .allCard::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: #295f9884;
+  border-radius: 20px;
+}
+.card-surah .allCard .myCard,
+.card-juz .allCard .myCard,
+.page-card .allCard .myCard {
+  position: relative;
+  background-color: var(--secondary-color);
+  width: 240px;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 3;
+  transition: 0.5s;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--primary-color);
+  /* font-family: "Amiri", serif; */
+}
+.page-card .allCard .myCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.card-surah .allCard .myCard:hover,
+.page-card .allCard .myCard:hover,
+.card-juz .allCard .myCard:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  background-color: white;
+}
+.card-surah .allCard .myCard h3 {
+  font-family: "Amiri", serif;
+  font-weight: bold;
+}
+.link {
+  text-decoration: none;
+  padding: 10px 15px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border-radius: 10px;
+  cursor: pointer;
+}
+/* End Quran Cart */
+/* Loader */
+.container-Loader {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--secondary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  width: 100px;
+  aspect-ratio: 1;
+  display: grid;
+  border-radius: 50%;
+  background: linear-gradient(
+        0deg,
+        rgb(0 0 0/50%) 30%,
+        #0000 0 70%,
+        rgb(0 0 0/100%) 0
+      )
+      50%/8% 100%,
+    linear-gradient(90deg, rgb(0 0 0/25%) 30%, #0000 0 70%, rgb(0 0 0/75%) 0)
+      50%/100% 8%;
+  background-repeat: no-repeat;
+  animation: l23 1s infinite steps(12);
+}
+.loader::before,
+.loader::after {
+  content: "";
+  grid-area: 1/1;
+  border-radius: 50%;
+  background: inherit;
+  opacity: 0.915;
+  transform: rotate(30deg);
+}
+.loader::after {
+  opacity: 0.83;
+  transform: rotate(60deg);
+}
+.loaderSm {
+  width: 50px;
+}
+@keyframes l23 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+/* End Loader */
+/* Surah Page */
+.surah-container {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  padding: 20px;
+  width: 100%;
+  min-height: 100vh;
+}
+.surah-container .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.surah-container .container ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 20px 0 100px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.surah-container .container ul li {
+  font-size: 17px;
+  margin: 10px;
+  font-weight: bold;
+}
+.surah-container .container h1 {
+  margin: 0px 0 50px;
+  font-family: "Amiri", serif;
+}
+.surah-container .container .end {
+  margin: 50px 0 50px;
+  font-family: "Amiri", serif;
+}
+.surah-container .container .container-info {
+  padding: 20px;
+  text-align: justify;
+  line-height: 1.7;
+}
+.surah-container .container .container-info .info-ayah {
+  display: inline;
+}
+
+.surah-container .container .container-info span {
+  font-size: 30px;
+  font-family: "Uthman Hafs";
+  cursor: pointer;
+}
+.surah-container .container .container-info span.span-text:hover {
+  color: red;
+}
+.surah-container .container .container-info span.number {
+  color: green;
+  font-weight: bold;
+}
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin: 50px 0;
+}
+.buttons .btnTo {
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border-radius: 5px;
+  border: 0;
+  transition: 0.4s;
+  margin: 0 10px;
+}
+.buttons .btnTo .icon-btnL {
+  margin-right: 5px;
+}
+.buttons .btnTo .icon-btnR {
+  margin-left: 5px;
+}
+.buttons .btnTo:hover,
+.buttons .btnTo:hover {
+  background-color: var(--background-color);
+}
+/* End Surah Page */
+/* Scroll Buttons */
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 50px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  opacity: 0.8;
+  transition: opacity 0.3s;
+  z-index: 5 !important;
+}
+.scroll-to-bottom {
+  position: fixed;
+  bottom: 20px;
+  right: 110px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  opacity: 0.8;
+  transition: opacity 0.3s;
+  z-index: 5 !important;
+}
+.scroll-to-top:hover,
+.scroll-to-bottom:hover {
+  opacity: 1;
+}
+
+/* End Scroll Buttons */
+/* Juz Quran */
+.card-juz .allCard .myCard {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--primary-color);
+}
+.card-juz .allCard .myCard h4 {
+  font-size: 18px;
+}
+.card-juz .container > h1 {
+  margin: 0 0 70px;
+  font-family: "Amiri", serif;
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+.title-ayah {
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+  margin: 40px 0;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  line-height: 1.7;
+}
+
+.basmala {
+  text-align: center;
+}
+/* End Juz Quran */
+/* music  */
+.rhap_container {
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  padding: 10px;
+  width: 70%;
+  height: 80px;
+}
+/* music  */
+/* data of ayah  */
+.page-data-ayah {
+  background-color: var(--secondary-color);
+  padding: 40px 0;
+}
+.page-data-ayah h4 {
+  margin: 30px 0;
+  line-height: 1.7;
+}
+/* data of ayah  */
+.textOfAyah {
+  text-align: justify;
+  border: 3px solid var(--background-color);
+  padding: 15px;
+  border-radius: 5px;
+  background-color: var(--color);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
