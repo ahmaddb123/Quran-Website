@@ -9,11 +9,11 @@ export default function Audios() {
 
   const riwayat = useSelector((state) => state.riwayat.riwayat);
   const reciters = useSelector((state) => state.reciters.riwayat.reciters);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // استدعاء الأكشن لجلب البيانات
     const fetchData = async () => {
       try {
         await dispatch(fetchRiwayat());
@@ -25,6 +25,7 @@ export default function Audios() {
       }
     };
     fetchData();
+    window.scrollTo(0, 0);
   }, [dispatch]);
 
   if (loading) {
@@ -35,30 +36,37 @@ export default function Audios() {
     );
   }
 
-  if (!reciters || reciters.length === 0) {
-    return <p>No reciters available.</p>;
-  }
-  console.log(reciters[1].moshaf[0].name);
+  const filteredReciters = reciters.filter((reciter) =>
+    reciter.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
-    <div className="container-audios">
+    <div className="card-audios">
       <div className="container">
-        <ul>
-          <li><select>
-              {/* <option disabled selected hidden>أختر الرواية / نوع المصحف</option> */}
-            {riwayat.riwayat.map(riwaha => {
-            return (
-                <option key={riwaha.id}>{riwaha.name}</option>
-            )
-          })}</select></li>
-        </ul>
+        <h1>سماع تلاوة "القرأن الكريم" </h1>
+        <h5 className="description">يمكنك سماع تلاوة القرآن الكريم لمختلف القرائ وأشهرهم أكتب أسم القارئ وحدد التلاوة والسورة المطلوب سماعها </h5>
+        <h5 className="description">كما يمكنك بعد تحديد السورة تحمليها بصيغة mp3</h5>
+        <input
+          className="input-search"
+          type="text"
+          placeholder="أكتب أسم القارئ الذي تبحث عنه ..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
         <div className="allCard">
-          {reciters.map((reciter) => (
-            <Link key={reciter.id} to={`/reciter/${reciter.id}`}>
-              <h1>{reciter.name}</h1>
-              <h4>{reciter.moshaf.map(name => name.name)}</h4>
-            </Link>
-          ))}
+          {filteredReciters.length > 0 ? (
+            filteredReciters.map((reciter) => (
+              <Link
+                className="myCard"
+                key={reciter.id}
+                to={`/audios/${reciter.id}`}
+              >
+                <h4>{reciter.name}</h4>
+              </Link>
+            ))
+          ) : (
+            <h3 className="error">للأسف لايوجد هذا القارئ 😥</h3>
+          )}
         </div>
       </div>
     </div>

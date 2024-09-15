@@ -1,4 +1,4 @@
-import video from "./images/background-animation.mp4";
+
 export default function Landing() {
   return (
     <div className="landing">

@@ -64,8 +64,9 @@ export default function SurahPage() {
 
   // Conditions in my Page
   // handel Click
-  const handleClick = async (verseNumber) => {
-    navigate(`/ayah/${verseNumber}`);
+  const handleClick = (verseNumber) => {
+    const url = `/ayah/${verseNumber}`;
+    window.open(url, "_blank"); // فتح الرابط في تبويب جديد
   };
   // handel Click
   const chapters = quran.chapters || [];
@@ -121,13 +122,17 @@ export default function SurahPage() {
             return (
               <div className="info-ayah" key={ayah.id}>
                 <span
-                  title="أضغط على الاية لرؤية ترجمتها وسماع تلاوتها"
+                  title="أضغط على الاية لرؤية ترجمتها وتفسيرها وسماع تلاوتها"
                   className="span-text"
                   onClick={() => handleClick(ayah.verse_key)}
+                   target="_blank"
                 >
                   {ayah.text_uthmani}
                 </span>
-                <span className="number"> ﴿{ayah.verse_key.split(":")[1]}﴾ </span>
+                <span className="number">
+                  {" "}
+                  ﴿{ayah.verse_key.split(":")[1]}﴾{" "}
+                </span>
               </div>
             );
           })}

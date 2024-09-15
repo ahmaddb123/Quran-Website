@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchReciters = createAsyncThunk("quran/fetchReciters", async () => {
   const res = await fetch(
-    "https://mp3quran.net/api/v3/reciters"
+    "https://mp3quran.net/api/v3/reciters" 
   );
   const data = await res.json();
   return data; 

@@ -23,12 +23,12 @@ export default function PageOfQuran() {
         );
         if (!res.ok) throw new Error(`Error fetching page ${id}`);
         const data = await res.json();
-        setPage(data.data); // تعيين البيانات إلى الحالة
+        setPage(data.data); 
       } catch (error) {
         console.error(`Failed to fetch page ${id}:`, error);
-        setError(error.message); // تعيين رسالة الخطأ
+        setError(error.message); 
       } finally {
-        setLoading(false); // تعيين حالة التحميل إلى false
+        setLoading(false); 
       }
     };
     fetchPage();
@@ -36,7 +36,8 @@ export default function PageOfQuran() {
   }, [id]);
 
   const handleClick = (verseNumber) => {
-    navigate(`/ayah/${verseNumber}`);
+    const url = `/ayah/${verseNumber}`;
+    window.open(url, "_blank");
   };
 
   if (loading)
@@ -122,7 +123,7 @@ export default function PageOfQuran() {
 
                 <span className="number"> ﴿{ayah.numberInSurah}﴾ </span>
                 <span
-                title="أضغط على الاية لرؤية ترجمتها وسماع تلاوتها"
+                title="أضغط على الاية لرؤية ترجمتها وتفسيرها وسماع تلاوتها"
                   className="span-text"
                   onClick={() =>
                     handleClick(`${ayah.surah.number}:${ayah.numberInSurah}`)

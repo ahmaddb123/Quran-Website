@@ -83,8 +83,9 @@ export default function JuzCart() {
     }
   };
 
-  const handleClick = async (verseNumber) => {
-    navigate(`/ayah/${verseNumber}`);
+  const handleClick = (verseNumber) => {
+    const url = `/ayah/${verseNumber}`;
+    window.open(url, "_blank"); // فتح الرابط في تبويب جديد
   };
 
   let currentSurah = null;
@@ -119,7 +120,7 @@ export default function JuzCart() {
                 )}
 
                 <span className="number"> ﴿{ayah.numberInSurah}﴾ </span>
-                <span title="أضغط على الاية لرؤية ترجمتها وسماع تلاوتها" className="span-text" onClick={() => handleClick(`${ayah.surah.number}:${ayah.numberInSurah}`)}>
+                <span title="أضغط على الاية لرؤية ترجمتها وتفسيرها وسماع تلاوتها" className="span-text" onClick={() => handleClick(`${ayah.surah.number}:${ayah.numberInSurah}`)}>
                   {ayah.surah.name === "سُورَةُ ٱلْفَاتِحَةِ" ||
                   ayah.numberInSurah === 30
                     ? ayah.text
